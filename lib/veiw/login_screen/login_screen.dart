@@ -1,5 +1,7 @@
+import 'package:firebase_april_25/controller/login_controller.dart';
 import 'package:firebase_april_25/veiw/registration_screen/registration_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -18,9 +20,15 @@ class _LoginScreenState extends State<LoginScreen> {
 
     // Here you can add login logic (API call, validation, etc.)
     if (email.isNotEmpty && password.isNotEmpty) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text("Login Successful!")));
+      context.read<LoginController>().login(
+        context: context,
+        email: email,
+        password: password,
+      );
+
+      // ScaffoldMessenger.of(
+      //   context,
+      // ).showSnackBar(const SnackBar(content: Text("Login Successful!")));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text("Please enter email and password")),

@@ -1,4 +1,6 @@
+import 'package:firebase_april_25/controller/register_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -12,7 +14,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
-  void _register() {
+  Future<void> _register() async {
     String email = _emailController.text.trim();
     String password = _passwordController.text.trim();
     String confirmPassword = _confirmPasswordController.text.trim();
@@ -32,9 +34,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
 
     // Registration logic (API, DB etc.)
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text("Registration Successful!")));
+
+    await context.read<RegisterController>().onRegister(
+      context: context,
+      emailAddress: email,
+      password: password,
+    );
+
+    // ScaffoldMessenger.of(
+    //   context,
+    // ).showSnackBar(const SnackBar(content: Text("Registration Successful!")));
 
     // Navigate back to login screen
     Navigator.pop(context);

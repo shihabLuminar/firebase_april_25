@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_april_25/veiw/auth_page/auth_page.dart';
 import 'package:firebase_april_25/veiw/login_screen/login_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => const LoginScreen()),
+        MaterialPageRoute(builder: (_) => const AuthPage()),
       );
     });
   }
