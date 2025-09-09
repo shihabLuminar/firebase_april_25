@@ -40,8 +40,9 @@ class HomeScreen extends StatelessWidget {
               itemCount: studentDocuments.length,
               itemBuilder: (context, index) => StudentCard(
                 onTap: () {
-                  context.read<HomeScreenController>().onDelete(
-                    studentDocuments[index].id,
+                  context.read<HomeScreenController>().update(
+                    id: studentDocuments[index].id,
+                    ph: "3456789",
                   );
                 },
                 student: {

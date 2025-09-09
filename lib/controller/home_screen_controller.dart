@@ -17,7 +17,21 @@ class HomeScreenController with ChangeNotifier {
     students.add({"name": name, "ph": ph, "place": place});
   }
 
-  void update() {
-    students.doc('').update({"": ""});
+  void update({required String id, String? name, String? ph, String? place}) {
+    final Map<String, dynamic> data = {};
+
+    if (name != null) {
+      data['name'] = name;
+    }
+    if (ph != null) {
+      data['ph'] = ph;
+    }
+    if (place != null) {
+      data['place'] = place;
+    }
+
+    if (data.isNotEmpty) {
+      students.doc(id).update(data);
+    }
   }
 }
