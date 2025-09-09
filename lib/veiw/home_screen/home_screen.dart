@@ -1,4 +1,5 @@
 import 'package:firebase_april_25/controller/home_screen_controller.dart';
+import 'package:firebase_april_25/veiw/add_student_screen/add_student_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,7 +12,10 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          context.read<HomeScreenController>().addStudent(3);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => AddStudentPage()),
+          );
         },
       ),
       appBar: AppBar(

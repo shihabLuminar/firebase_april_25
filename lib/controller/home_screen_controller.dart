@@ -9,12 +9,12 @@ class HomeScreenController with ChangeNotifier {
     students.doc(id).delete();
   }
 
-  void addStudent(int index) {
-    students.add({
-      "name": "data$index",
-      "ph": "ph$index",
-      "place": "place$index",
-    });
+  void addStudent({
+    required String name,
+    required String ph,
+    required String place,
+  }) {
+    students.add({"name": name, "ph": ph, "place": place});
   }
 
   void update() {
