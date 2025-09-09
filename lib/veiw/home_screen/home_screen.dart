@@ -1,5 +1,6 @@
 import 'package:firebase_april_25/controller/home_screen_controller.dart';
 import 'package:firebase_april_25/veiw/add_student_screen/add_student_screen.dart';
+import 'package:firebase_april_25/veiw/edit_student_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -40,9 +41,13 @@ class HomeScreen extends StatelessWidget {
               itemCount: studentDocuments.length,
               itemBuilder: (context, index) => StudentCard(
                 onTap: () {
-                  context.read<HomeScreenController>().update(
-                    id: studentDocuments[index].id,
-                    ph: "3456789",
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EditStudentPage(
+                        studentId: studentDocuments[index].id,
+                      ),
+                    ),
                   );
                 },
                 student: {
