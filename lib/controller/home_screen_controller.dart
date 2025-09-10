@@ -13,8 +13,9 @@ class HomeScreenController with ChangeNotifier {
     required String name,
     required String ph,
     required String place,
+    required String url,
   }) {
-    students.add({"name": name, "ph": ph, "place": place});
+    students.add({"name": name, "ph": ph, "place": place, "url": url});
   }
 
   void update({

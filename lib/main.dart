@@ -1,3 +1,4 @@
+import 'package:firebase_april_25/controller/add_student_screen_controller.dart';
 import 'package:firebase_april_25/controller/home_screen_controller.dart';
 import 'package:firebase_april_25/controller/login_controller.dart';
 import 'package:firebase_april_25/controller/register_controller.dart';
@@ -24,6 +25,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => LoginController()),
         ChangeNotifierProvider(create: (context) => RegisterController()),
         ChangeNotifierProvider(create: (context) => HomeScreenController()),
+        ChangeNotifierProvider(
+          create: (context) => AddStudentScreenController(),
+        ),
       ],
       child: MaterialApp(home: SplashScreen()),
     );

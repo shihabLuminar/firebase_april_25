@@ -51,6 +51,7 @@ class HomeScreen extends StatelessWidget {
                   );
                 },
                 student: {
+                  "url": studentDocuments[index]["url"],
                   "name": studentDocuments[index]["name"],
                   "ph": studentDocuments[index]["ph"],
                   "place": studentDocuments[index]["place"],
@@ -82,10 +83,7 @@ class StudentCard extends StatelessWidget {
         contentPadding: const EdgeInsets.all(16),
         leading: CircleAvatar(
           backgroundColor: Colors.deepPurple,
-          child: Text(
-            student["name"]![0], // first letter of name
-            style: const TextStyle(color: Colors.white),
-          ),
+          backgroundImage: NetworkImage(student["url"] ?? ""),
         ),
         title: Text(
           student["name"]!,

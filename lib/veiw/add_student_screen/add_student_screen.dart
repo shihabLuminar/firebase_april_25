@@ -1,3 +1,4 @@
+import 'package:firebase_april_25/controller/add_student_screen_controller.dart';
 import 'package:firebase_april_25/controller/home_screen_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -36,6 +37,7 @@ class _AddStudentPageState extends State<AddStudentPage> {
         name: name,
         ph: phone,
         place: place,
+        url: context.read<AddStudentScreenController>().studnetImageurl ?? "",
       );
 
       // // For now just show success (you can send to API or DB here)
@@ -54,6 +56,7 @@ class _AddStudentPageState extends State<AddStudentPage> {
 
   @override
   Widget build(BuildContext context) {
+    final addScreenProvider = context.watch<AddStudentScreenController>();
     return Scaffold(
       appBar: AppBar(title: const Text("Add Student"), centerTitle: true),
       body: Padding(
@@ -61,8 +64,21 @@ class _AddStudentPageState extends State<AddStudentPage> {
         child: Form(
           key: _formKey,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              InkWell(
+                onTap: () {
+                  context.read<AddStudentScreenController>().pickImage();
+                },
+                child: CircleAvatar(
+                  radius: 70,
+                  backgroundImage: addScreenProvider.studnetImageurl != null
+                      ? NetworkImage(addScreenProvider.studnetImageurl!)
+                      : null,
+                ),
+              ),
+
               // Student Name
               TextFormField(
                 controller: _nameController,
